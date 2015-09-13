@@ -9,23 +9,27 @@ Created on Fri Sep 11 07:10:26 2015
 print('|---------------------------------------------------|')
 print('| Temperature Converter : Version 1.0 : Rob Pelley  |')
 print('|---------------------------------------------------|')
+print('| Conversions :                                     |')
+print('|---------------------------------------------------|')
 print('| 1 : Fahrenheit                                    |')
 print('| 2 : Celcius                                       |')
 print('| 3 : Kelvin                                        |')
 print('| 4 : Rankine                                       |')
 print('|---------------------------------------------------|')
 
-conv  =   int(input('| Convert     [1-4] : '))
-lower = float(input('| Range from        : '))
-upper = float(input('| Range to          : '))
-step  = float(input('| Increment         : '))
+conv  =   int(input('| Select Conversion [1-4]  : '))
+lower = float(input('| Enter Range from         : '))
+upper = float(input('| Enter Range to           : '))
+step  = float(input('| Enter Increment          : '))
 
+print('|---------------------------------------------------|')
+print('| Destinations :                                    |')
 print('|---------------------------------------------------|')
 print('| 1 : Terminal                                      |')
 print('| 2 : File                                          |')
 print('|---------------------------------------------------|')
 
-dest  =   int(input('| Destination [1-2] : '))
+dest  =   int(input('| Select Destination [1-2] : '))
 
 if dest == 2 :
     fname = str(input('| File Name         : '))
