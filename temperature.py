@@ -149,8 +149,10 @@ if conv in [1,2,3,4] and dest in [1,2] and lower <= upper and step > 0 :
     
     print('-----------------------------------------------------')
         
-    if dest == 2 : 
+    if dest == 2 :
+        
         file.close()
+
         print('| ' + str(lc) + ' records witten')
         print('-----------------------------------------------------\n')
 
