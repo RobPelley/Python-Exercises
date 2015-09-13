@@ -1,2 +1,5 @@
 # Python-Exercises
-Python Exercises Repository
+
+Authored by Robert Pelley.
+
+Contains test code for learning Python programming.
