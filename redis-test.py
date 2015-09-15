@@ -37,6 +37,8 @@ print 'The Element at position 0 of the List is : %s' % r.lindex('L1', 0)
 
 print 'The Element at position 1 of the List is : %s' % r.lindex('L1', 1)
 
+print 'The Element at position 5 of the List is : %s' % r.lindex('L1', 5)
+
 r.sadd('S1', 'E1')
 r.sadd('S1', 'E2')
 r.sadd('S1', 'E2')
