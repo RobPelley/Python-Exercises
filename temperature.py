@@ -17,10 +17,10 @@ print('| 3 : Kelvin                                        |')
 print('| 4 : Rankine                                       |')
 print('|---------------------------------------------------|')
 
-conv  =   int(input('| Select Conversion [1-4]  : '))
-lower = float(input('| Enter Range from         : '))
-upper = float(input('| Enter Range to           : '))
-step  = float(input('| Enter Increment          : '))
+conv  =   int(input('| Enter Source Conversion [1-4]  : '))
+lower = float(input('| Enter Range from               : '))
+upper = float(input('| Enter Range to                 : '))
+step  = float(input('| Enter Increment                : '))
 
 print('|---------------------------------------------------|')
 print('| Destinations :                                    |')
@@ -29,7 +29,7 @@ print('| 1 : Terminal                                      |')
 print('| 2 : File                                          |')
 print('|---------------------------------------------------|')
 
-dest  =   int(input('| Select Destination [1-2] : '))
+dest  =   int(input('| Enter Output Destination [1-2] : '))
 
 if dest == 2 :
     fname = str(input('| CSV File Name            : '))
