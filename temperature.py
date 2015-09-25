@@ -17,7 +17,8 @@ print('| 3 : Kelvin                                        |')
 print('| 4 : Rankine                                       |')
 print('|---------------------------------------------------|')
 
-conv  =   int(input('| Enter Source Conversion [1-4]  : '))
+convf =   int(input('| Enter Source Conversion [1-4]  : '))
+convt =   int(input('| Enter Target Conversion [1-4]  : '))
 lower = float(input('| Enter Range from               : '))
 upper = float(input('| Enter Range to                 : '))
 step  = float(input('| Enter Increment                : '))
@@ -31,38 +32,39 @@ print('|---------------------------------------------------|')
 
 dest  =   int(input('| Enter Output Destination [1-2] : '))
 
+print('|---------------------------------------------------|')
+
 if dest == 2 :
     fname = str(input('| CSV File Name            : '))
 
 names = ['Fahrenheit', 'Celcius', 'Kelvin', 'Rankine']
+temps = [0.0,0.0,0.0,0.0]
 
-def hdr (d, c1, c2, c3, c4) :
+def hdr (d, cf, ct) :
     if d == 1 :
-        print('-----------------------------------------------------')
-        print('| ' + names[c1].rjust(10) 
-           + ' | ' + names[c2].rjust(10)
-           + ' | ' + names[c3].rjust(10)
-           + ' | ' + names[c4].rjust(10) + ' |')
-        print('-----------------------------------------------------')
+        print('\n---------------------------')
+        print('| ' + names[cf].rjust(10) 
+           + ' | ' + names[ct].rjust(10) + ' |')
+        print('---------------------------')
     else :
-        file.write(names[c1] + ',' + names[c2] + ',' + names[c3] + ',' + names[c4] + '\n')
+        file.write(names[cf] + ',' + names[ct] + '\n')
 
-def lines (d, c1, c2, c3, c4) :
+def lines (d, cf, ct) :
     if d == 1 :
-        print('| %10.2f | %10.2f | %10.2f | %10.2f |' % (c1,c2,c3,c4))
+        print('| %10.2f | %10.2f |' % (temps[cf],temps[ct]))
     else :
-        file.write(str(c1) + ',' + str(c2) + ',' + str(c3) + ',' + str(c4) + '\n')
+        file.write(str(temps[cf]) + ',' + str(temps[ct]) + '\n')
     
 
-if conv in [1,2,3,4] and dest in [1,2] and lower <= upper and step > 0 :
+if convf in [1,2,3,4] and convt in [1,2,3,4] and dest in [1,2] and lower <= upper and step > 0 :
     
     lc = 0
 
     if dest == 2 : file = open(fname,'w')
     
-    if conv == 1 :
+    if convf == 1 :
         
-        hdr(dest, 0, 1, 2, 3)        
+        hdr(dest, convf - 1, convt - 1)        
     
         f = lower
     
@@ -73,15 +75,17 @@ if conv in [1,2,3,4] and dest in [1,2] and lower <= upper and step > 0 :
             ko = ((f + 459.67) * 5) / 9
             ro = f + 459.67
     
-            lines(dest, fo, co, ko, ro)
+            temps = [fo,co,ko,ro]
+
+            lines(dest, convf - 1, convt - 1)
                    
             lc += 1
             
             f = f + step
                 
-    elif conv == 2 :
+    elif convf == 2 :
     
-        hdr(dest, 1, 0, 2, 3)
+        hdr(dest, convf - 1, convt - 1)        
     
         c = lower
     
@@ -92,15 +96,17 @@ if conv in [1,2,3,4] and dest in [1,2] and lower <= upper and step > 0 :
             ko = c + 273.15
             ro = ((c + 273.15) * 9 / 5)
             
-            lines(dest, co, fo, ko, ro)
+            temps = [fo,co,ko,ro]
+
+            lines(dest, convf - 1, convt - 1)
             
             lc += 1
             
             c = c + step
       
-    elif conv == 3 :
+    elif convf == 3 :
     
-        hdr(dest, 2, 3, 0, 1)
+        hdr(dest, convf - 1, convt - 1)        
     
         k = lower
     
@@ -111,15 +117,17 @@ if conv in [1,2,3,4] and dest in [1,2] and lower <= upper and step > 0 :
             ko = k
             ro = (k * 9) / 5
             
-            lines(dest, ko, ro, fo, co)
+            temps = [fo,co,ko,ro]
+
+            lines(dest, convf - 1, convt - 1)
 
             lc += 1
             
             k = k + step
     
-    elif conv == 4 :
+    elif convf == 4 :
     
-        hdr(dest, 3, 2, 0, 1)
+        hdr(dest, convf - 1, convt - 1)        
 
         r = lower
     
@@ -130,18 +138,23 @@ if conv in [1,2,3,4] and dest in [1,2] and lower <= upper and step > 0 :
             ko = (r * 5) / 9
             ro = r
             
-            lines(dest, ro, ko, fo, co)
+            temps = [fo,co,ko,ro]
+
+            lines(dest, convf - 1, convt - 1)
 
             lc += 1
             
             r = r + step
     
-    print('-----------------------------------------------------')
+    if dest == 1 :
         
-    if dest == 2 :
+        print('---------------------------')
+        
+    else :
         
         file.close()
 
+        print('-----------------------------------------------------')
         print('| 1 header and ' + str(lc) + ' records written')
         print('-----------------------------------------------------')
 
