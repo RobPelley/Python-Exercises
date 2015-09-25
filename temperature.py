@@ -148,7 +148,7 @@ if convf in [1,2,3,4] and convt in [1,2,3,4] and dest in [1,2] and lower <= uppe
     
     if dest == 1 :
         
-        print('---------------------------')
+        print('---------------------------\n')
         
     else :
         
